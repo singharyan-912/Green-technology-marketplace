@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenTech Marketplace | Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../css/content/customer.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <header class="main-header">
+            <div class="header-container">
+                <div class="logo" onclick="window.location.href='customer.html'" style="cursor:pointer">
+                    <img src="../asset/site_logo.jpg" alt="Logo" class="logo-icon">
+                    <span class="logo-text">Green<span>Tech</span></span>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="main-search-input" placeholder="Search eco-friendly products...">
+                    <button class="search-button" id="search-trigger">🔍</button>
+                </div>
+
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="customer.html" class="active">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#">Products ▾</a>
+                            <div class="dropdown-content">
+                                <a href="products-listing.html?search=Electronics">Electronics</a>
+                                <a href="products-listing.html?search=Home Goods">Home Goods</a>
+                                <a href="products-listing.html?search=Outdoor">Outdoor & Garden</a>
+                                <a href="products-listing.html?search=Personal Care">Personal Care</a>
+                            </div>
+                        </li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="user-actions">
+                    <div class="action-icon">
+                        <img src="../asset/e-commerce.png" alt="Wishlist">
+                        <span class="badge" id="wishlist-count">0</span>
+                    </div>
+                    <div class="action-icon">
+                        <img src="../asset/shopping-cart.png" alt="Cart">
+                        <span class="badge" id="cart-count">0</span>
+                    </div>
+                    
+                    <div class="user-profile dropdown">
+                        <div class="avatar-wrapper">
+                            <img src="../asset/myAccount.jpg" alt="User Avatar" class="avatar">
+                        </div>
+                        <span id="header-user-name">Account</span>
+                        <div class="dropdown-content">
+                            <a href="javascript:void(0)" id="btn-profile">My Profile</a>
+                            <a href="javascript:void(0)" id="btn-orders">Order History</a>
+                            <hr>
+                            <a href="#" class="logout-link">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero-section">
+    <!-- Background Slider -->
+    <div class="hero-slider">
+        <!-- Slide 1: Video -->
+        <div class="hero-slide active">
+            <video autoplay muted loop playsinline class="hero-bg-media">
+                <!-- Replace with your downloaded video path -->
+                <source src="../asset/video.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <!-- Slide 2: Image -->
+        <div class="hero-slide" style="background-image: url('https://media.gettyimages.com/id/933395700/video/wind-turbine-farm-at-sunset.jpg?s=640x640&k=20&c=X7Rdz19utZSHqP2Ob5bEg2AcEV-4MudLuMLfxvUZ8U8=');">
+        </div>
+    </div>
+
+    <!-- Overlay Text (Always on top) -->
+    <div class="hero-content">
+        <h2>Innovating a Sustainable Future</h2>
+        <p>Explore cutting-edge green technologies for a better tomorrow.</p>
+        <button class="btn-primary" onclick="window.location.href='products-listing.html'">Shop Now</button>
+    </div>
+</section>
+
+        <section class="content-section">
+            <h3 class="section-title">Featured Categories</h3>
+           <!-- Category Cards Section -->
+<div class="category-grid">
+    <div class="category-card" onclick="window.location.href='products-listing.html?search=Electronics'" style="background-image: url('https://solaristic.id/wp-content/uploads/2021/09/SOLARPV_ROOFTOP.jpg');">
+        <div class="cat-overlay"><span>Electronics</span></div>
+    </div>
+    
+    <!-- Fixed Home Goods Image using a high-reliability Unsplash link -->
+    <div class="category-card" onclick="window.location.href='products-listing.html?search=Home Goods'" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop');">
+        <div class="cat-overlay"><span>Home Goods</span></div>
+    </div>
+
+    <div class="category-card" onclick="window.location.href='products-listing.html?search=Outdoor'" style="background-image: url('https://yeobuild.com.sg/wp-content/uploads/2023/10/Featured-Photo-3.png');">
+        <div class="cat-overlay"><span>Outdoor</span></div>
+    </div>
+</div>
+
+            <h3 class="section-title">New Arrivals</h3>
+            <div class="products-grid" id="new-arrivals-products">
+                <p>Loading eco-tech...</p>
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="logo">
+                        <span class="logo-text">Green<span>Tech</span></span>
+                    </div>
+                    <p>Leading the way in sustainable technology and eco-friendly home solutions for a greener planet.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About GreenTech</a></li>
+                        <li><a href="products-listing.html">Shop All Products</a></li>
+                        <li><a href="javascript:void(0)" onclick="document.getElementById('btn-orders').click()">Order History</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Top Categories</h4>
+                    <ul>
+                        <li><a href="products-listing.html?search=Solar">Solar Tech</a></li>
+                        <li><a href="products-listing.html?search=EV">EV Accessories</a></li>
+                        <li><a href="products-listing.html?search=Home">Home Energy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p>📍 xyz, Noida,Gautam Buddha Nagar </p>
+                    <p>✉️ support@greentech.com</p>
+                    <p>📞 +1 234 567 890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GreenTech Marketplace. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="user-modal-overlay">
+        <div class="modal-dashboard">
+            <span class="close-x" id="close-modal">&times;</span>
+            <div class="modal-sidebar">
+                <div class="sidebar-greeting" id="user-greeting">HELLO USER</div>
+                <ul>
+                    <li class="active" id="tab-profile">ACCOUNT INFORMATION</li>
+                    <li id="tab-orders">MY ORDERS</li>
+                    <li id="tab-reviews">MY REVIEWS</li>
+                    <li>ADDRESS BOOK</li>
+                    <li class="logout-link">LOGOUT</li>
+                </ul>
+            </div>
+            <div class="modal-main-content" id="dashboard-content"></div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/customer.js"></script>
+</body>
+</html>

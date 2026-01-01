@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - GreenTech Marketplace</title>
+    <link rel="stylesheet" href="../css/content/admin.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../asset/admin-logo.png" style="width:50px; height:50px;" class="logo-icon" alt="Logo">
+                <h2>Admin Panel</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="admin.html" data-section="dashboard">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="user_management.html" data-section="user-management">
+                            <i class="fas fa-users"></i> User Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="product_listing.html" data-section="product-listings">
+                            <i class="fas fa-boxes"></i> Product Listings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="order-management.html" data-section="order-management">
+                            <i class="fas fa-shopping-cart"></i> Order Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="system_settings.html" data-section="system-settings">
+                            <i class="fas fa-cog"></i> System Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="review_overview.html" data-section="review-overview">
+                            <i class="fas fa-comments"></i> Review Overview
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="admin-profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Admin</span>
+                </div>
+                <div class="header-actions">
+                    <button class="login-button logout-button">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </header>
+
+            <section id="dashboard" class="dashboard-section active-section">
+                <div class="section-header">
+                    <h2>Dashboard Overview</h2>
+                    <p id="current-date" style="color: var(--text-muted); font-size: 0.9rem;"></p>
+                </div>
+
+                <!-- Main Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card total-users">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h3>Total Users</h3>
+                            <p id="totalUsersCount">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card active-listings">
+                        <i class="fas fa-box-open"></i>
+                        <div>
+                            <h3>Active Listings</h3>
+                            <p id="activeListingsCount">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card pending-orders">
+                        <i class="fas fa-hourglass-half"></i>
+                        <div>
+                            <h3>Pending Orders</h3>
+                            <p id="pendingOrdersCount">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card new-reviews">
+                        <i class="fas fa-star"></i>
+                        <div>
+                            <h3>New Reviews</h3>
+                            <p id="newReviewsCount">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Data Row (New Detail) -->
+                <div class="dashboard-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-top: 30px;">
+                    
+                    <!-- Recent Orders Detail -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Recent Orders</h3>
+                            <a href="order-management.html" style="color: var(--primary-green); font-size: 0.8rem; text-decoration: none; font-weight: 600;">View All</a>
+                        </div>
+                        <div class="card-body">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Customer</th>
+                                        <th>Status</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentOrdersTable">
+                                    <!-- Dynamic Data -->
+                                    <tr><td colspan="4" style="text-align:center; padding: 20px; color: var(--text-muted);">Fetching recent orders...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Recently Joined Users -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>New Users</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul id="newUsersList" style="list-style: none; padding: 0;">
+                                <!-- Dynamic Data: format will be <li> with user info -->
+                                <li style="text-align:center; padding: 20px; color: var(--text-muted);">Loading users...</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+<!-- Updated Admin Profile View Modal -->
+<div id="adminProfileModal" class="profile-modal-overlay">
+    <div class="profile-card">
+        <button class="close-profile" id="closeProfileView">&times;</button>
+        <div class="profile-header">
+            <!-- Dynamic Avatar Initial -->
+            <div class="large-avatar" id="viewAdminAvatar">A</div>
+            <h3 id="viewAdminName">Admin Name</h3>
+            <span class="badge">System Administrator</span>
+        </div>
+        
+        <div class="profile-info-list">
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <label>Email Address</label>
+                    <p id="viewAdminEmail">admin@greentech.com</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <label>Phone Number</label>
+                    <p id="viewAdminPhone">Not Set</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <label>Location</label>
+                    <p id="viewAdminAddress">Not Set</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-footer">
+            <button id="openEditProfileBtn" class="btn-edit-profile">
+                <i class="fas fa-user-edit"></i> Edit Profile
+            </button>
+            <button class="btn-logout-alt logout-button">
+                <i class="fas fa-sign-out-alt"></i> Log Out
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Admin Profile Edit Modal -->
+<div id="editProfileModal" class="modal">
+    <div class="modal-content">
+        <div class="card-header">
+            <h3>Update Profile Details</h3>
+            <span class="close-modal" id="closeProfileEdit">&times;</span>
+        </div>
+        <form id="editProfileForm" class="card-body">
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="editAdminName" required>
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="editAdminEmail" required>
+            </div>
+            <div class="input-group">
+                <label>Phone Number</label>
+                <input type="text" id="editAdminPhone" required>
+            </div>
+            <div class="input-group">
+                <label>Address</label>
+                <textarea id="editAdminAddress" rows="3" style="width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;"></textarea>
+            </div>
+            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                <button type="submit" class="login-button">Save Changes</button>
+                <button type="button" class="login-button logout-button" id="cancelEditProfile">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+    <script type="module" src="../js/admin.js"></script>
+    <script>
+        // Small helper to show current date
+        document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { 
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - VendorPanel</title>
+    <link rel="stylesheet" href="../css/content/vendor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container" id="dashboardContainer">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="../asset/vendor-logo.png" style="width:50px; height:50px;" class="logo-icon" alt="Logo">
+                    <span>VendorPanel</span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i> <span>Dashboard</span></a></li>
+                    <li><a href="vendor_products.html" class="nav-item"><i class="fas fa-box"></i> <span>Products</span></a></li>
+                    <li><a href="vendor_add_product.html" class="nav-item"><i class="fas fa-plus-circle"></i> <span>Add Product</span></a></li>
+                    <li><a href="vendor_orders.html" class="nav-item"><i class="fas fa-shopping-bag"></i> <span>Orders</span></a></li>
+                    <li><a href="vendor_sales_analytics.html" class="nav-item active"><i class="fas fa-chart-pie"></i> <span>Analytics</span></a></li>
+                    <li><a href="vendor_settings.html" class="nav-item"><i class="fas fa-sliders-h"></i> <span>Settings</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </div>
+        </aside>
+
+        <main class="main-content" id="mainContent">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+                    <div class="page-title">
+                        <h2>Analytics Dashboard</h2>
+                        <p>Performance metrics for your store.</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="notification-bell"><i class="far fa-bell"></i><span class="dot"></span></div>
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <span class="user-name">Green Vendor</span>
+                            <span class="user-role">Premium Seller</span>
+                        </div>
+                        <div class="user-avatar">V</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Summary Cards (Unchanged) -->
+                <div class="card summary-card">
+                    <div class="card-icon green"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="card-info">
+                        <h3>Monthly Revenue</h3>
+                        <p class="summary-value" id="monthlyRevenue">$0.00</p>
+                    </div>
+                </div>
+                <div class="card summary-card">
+                    <div class="card-icon blue"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="card-info">
+                        <h3>Units Sold</h3>
+                        <p class="summary-value" id="unitsSold">0</p>
+                    </div>
+                </div>
+                <div class="card summary-card">
+                    <div class="card-icon orange"><i class="fas fa-trophy"></i></div>
+                    <div class="card-info">
+                        <h3>Top Product</h3>
+                        <p class="summary-value" id="topProduct">N/A</p>
+                    </div>
+                </div>
+                <div class="card summary-card">
+                    <div class="card-icon red"><i class="fas fa-chart-line"></i></div>
+                    <div class="card-info">
+                        <h3>Avg. Order</h3>
+                        <p class="summary-value" id="avgOrderValue">$0.00</p>
+                    </div>
+                </div>
+
+                <div class="card full-width-card chart-card">
+                    <div class="card-header"><h3>Sales Performance</h3></div>
+                    <div class="chart-container"><canvas id="salesChart"></canvas></div>
+                </div>
+
+                <div class="card full-width-card chart-card">
+                    <div class="card-header"><h3>Inventory Share</h3></div>
+                    <div class="chart-container"><canvas id="topProductsChart"></canvas></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="../js/vendor.js"></script>
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('closed');
+            document.getElementById('dashboardContainer').classList.toggle('sidebar-closed');
+        });
+    </script>
+</body>
+</html>

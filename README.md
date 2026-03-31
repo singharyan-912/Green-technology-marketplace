@@ -169,7 +169,8 @@ Vendor Dashboard
 | ----------------------------------------------- | -------------------------------------------- |
 | **HTML**                                        | Structure of the website                     |
 | **CSS**                                         | Styling and layout                           |
-| **JavaScript**                                  | Client-side functionality                    |
+| **JavaScript**                                  | Client-side functionality  
+| **React**                                        | Frontend
 | **Firebase Authentication**                     | User login and authentication                |
 | **Firebase Database (Firestore / Realtime DB)** | Storing users, products, orders, and reviews |
 | **Firebase Hosting**                            | Deployment of the website                    |

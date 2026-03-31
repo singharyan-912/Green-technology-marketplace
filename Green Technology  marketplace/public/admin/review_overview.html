@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Overview - GreenTech Admin</title>
+    <link rel="stylesheet" href="../css/content/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../asset/admin-logo.png" style="width:50px; height:50px;" class="logo-icon" alt="Logo">
+                <h2>Admin Panel</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="user_management.html"><i class="fas fa-users"></i> User Management</a></li>
+                    <li><a href="product_listing.html"><i class="fas fa-boxes"></i> Product Listings</a></li>
+                    <li><a href="order-management.html"><i class="fas fa-shopping-cart"></i> Order Management</a></li>
+                    <li><a href="system_settings.html"><i class="fas fa-cog"></i> System Settings</a></li>
+                    <li class="active"><a href="review_overview.html"><i class="fas fa-comments"></i> Review Overview</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="admin-profile"><i class="fas fa-user-circle"></i> <span>Admin</span></div>
+                <div class="header-actions">
+                    <button class="login-button logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </header>
+
+            <section id="review-overview" class="dashboard-section active-section">
+                <h2>Review Overview</h2>
+                <div class="card">
+                    <div class="card-header"><h3>Customer Feedback</h3></div>
+                    <div class="card-body">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Customer</th>
+                                    <th>Rating</th>
+                                    <th style="width: 40%;">Review & Response</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reviewTableBody">
+                                <tr><td colspan="5" style="text-align:center; padding: 20px;">Fetching reviews...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Dashboard - Green Technology Marketplace</title>
+    <link rel="stylesheet" href="../css/content/vendor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container" id="dashboardContainer">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+    <div class="logo">
+        <img src="../asset/vendor__logo.png" class="logo-icon" alt="Logo">
+        <span>VendorPanel</span>
+    </div>
+</div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="dashboard.html" class="nav-item active"><i class="fas fa-th-large"></i> <span>Dashboard</span></a></li>
+                    <li><a href="vendor_products.html" class="nav-item"><i class="fas fa-box"></i> <span>Products</span></a></li>
+                    <li><a href="vendor_add_product.html" class="nav-item"><i class="fas fa-plus-circle"></i> <span>Add Product</span></a></li>
+                    <li><a href="vendor_orders.html" class="nav-item"><i class="fas fa-shopping-bag"></i> <span>Orders</span></a></li>
+                    <li><a href="vendor_sales_analytics.html" class="nav-item"><i class="fas fa-chart-pie"></i> <span>Analytics</span></a></li>
+                    <li><a href="vendor_settings.html" class="nav-item"><i class="fas fa-sliders-h"></i> <span>Settings</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content" id="mainContent">
+            <header class="dashboard-header">
+    <div class="header-left">
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <div class="page-title">
+            <h2 id="pageTitleText">Overview</h2>
+            <p>Welcome back, here's what's happening today.</p>
+        </div>
+    </div>
+    <div class="header-actions">
+    <div class="notification-bell"><i class="far fa-bell"></i><span class="dot"></span></div>
+    
+    <!-- Added id="userProfileTrigger" to make it clickable -->
+    <div class="user-profile" id="userProfileTrigger" style="cursor: pointer;">
+        <div class="user-info">
+            <!-- Added id="headerUserName" -->
+            <span class="user-name" id="headerUserName">Loading...</span>
+            <span class="user-role">Vendor</span>
+        </div>
+        <!-- Added id="headerUserAvatar" -->
+        <div class="user-avatar" id="headerUserAvatar">V</div>
+    </div>
+</div>
+</header>
+
+            <!-- Overview Grid -->
+<section class="overview-section">
+    <div class="dashboard-grid">
+        <div class="card summary-card">
+            <div class="card-icon blue"><i class="fas fa-box"></i></div>
+            <div class="card-info">
+                <h3>Total Products</h3>
+                <div class="summary-value" id="totalProductsCount">...</div>
+                <p class="summary-trend">Live from Database</p>
+            </div>
+        </div>
+
+        <div class="card summary-card">
+            <div class="card-icon orange"><i class="fas fa-clock"></i></div>
+            <div class="card-info">
+                <h3>Pending Orders</h3>
+                <div class="summary-value" id="pendingOrdersCount">...</div>
+                <p class="summary-trend warning">Needs attention</p>
+            </div>
+        </div>
+
+        <div class="card summary-card">
+            <div class="card-icon red"><i class="fas fa-exclamation-circle"></i></div>
+            <div class="card-info">
+                <h3>Out of Stock</h3>
+                <div class="summary-value" id="outOfStockCount">...</div>
+                <p class="summary-trend negative">Hidden from store</p>
+            </div>
+        </div>
+
+        <div class="card summary-card">
+            <div class="card-icon green"><i class="fas fa-wallet"></i></div>
+            <div class="card-info">
+                <h3>Total Revenue</h3>
+                <div class="summary-value" id="totalRevenueValue">$0.00</div>
+                <p class="summary-trend positive">Fulfilled orders</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Orders Section -->
+<section class="recent-orders-section card table-card">
+    <div class="card-header">
+        <div class="header-title">
+            <h3>Recent Orders</h3>
+            <p>Latest transactions from your store</p>
+        </div>
+        <a href="vendor_orders.html" class="btn-outline">View All</a>
+    </div>
+    <div class="table-responsive">
+        <table class="data-table" id="recentOrdersTable">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data injected via vendor.js -->
+                <tr><td colspan="6" style="text-align:center;">Loading orders...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- Low Stock Section -->
+<section class="low-stock-section card table-card">
+    <div class="card-header">
+        <div class="header-title">
+            <h3>Inventory Alerts</h3>
+            <p>Products with stock less than 10 units</p>
+        </div>
+        <a href="vendor_products.html" class="btn-outline">Manage</a>
+    </div>
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Stock Left</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data injected via vendor.js -->
+                <tr><td colspan="4" style="text-align:center;">Checking inventory...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<div id="profileModal" class="profile-modal-overlay">
+    <div class="profile-card">
+        <button class="close-profile" id="closeProfileModal">&times;</button>
+        <div class="profile-header">
+            <div class="large-avatar" id="modalUserAvatar">V</div>
+            <h3 id="modalUserName">Vendor Name</h3>
+            <span class="badge" id="modalUserBadge">Premium Seller</span>
+        </div>
+        <div class="profile-info-list">
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <label>Email Address</label>
+                    <p id="modalUserEmail">vendor@example.com</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-store"></i>
+                <div>
+                    <label>Business Type</label>
+                    <p id="modalBusinessType">Green Technology</p>
+                </div>
+            </div>
+        </div>
+        <div class="profile-footer">
+            <a href="vendor_settings.html" class="btn-edit-profile"><i class="fas fa-user-edit"></i> Edit Profile</a>
+            <button class="btn-logout-alt logout-trigger"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+        </div>
+    </div>
+</div>
+
+    <script type="module" src="../js/vendor.js"></script>
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('closed');
+            document.getElementById('dashboardContainer').classList.toggle('sidebar-closed');
+        });
+    </script>
+</body>
+</html>

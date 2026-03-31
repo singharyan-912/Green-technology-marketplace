@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog - VendorPanel</title>
+    <link rel="stylesheet" href="../css/content/vendor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Unique Filter UI Styling */
+        .filter-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            gap: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            flex-wrap: wrap;
+        }
+        .filter-search { flex: 1; min-width: 250px; position: relative; }
+        .filter-search i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; }
+        .filter-search input { width: 100%; padding: 10px 10px 10px 40px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; }
+        .filter-group { display: flex; gap: 12px; align-items: center; }
+        .filter-select { padding: 10px 15px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc; font-size: 0.85rem; color: #475569; cursor: pointer; }
+        .btn-icon-text { background: #f1f5f9; border: none; padding: 10px 15px; border-radius: 8px; color: #64748b; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+        .btn-icon-text:hover { background: #e2e8f0; color: #0f172a; }
+        .text-danger { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container" id="dashboardContainer">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="../asset/vendor-logo.png" style="width:50px; height:50px;" class="logo-icon" alt="Logo">
+                    <span>VendorPanel</span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i> <span>Dashboard</span></a></li>
+                    <li><a href="vendor_products.html" class="nav-item active"><i class="fas fa-box"></i> <span>Products</span></a></li>
+                    <li><a href="vendor_add_product.html" class="nav-item"><i class="fas fa-plus-circle"></i> <span>Add Product</span></a></li>
+                    <li><a href="vendor_orders.html" class="nav-item"><i class="fas fa-shopping-bag"></i> <span>Orders</span></a></li>
+                    <li><a href="vendor_sales_analytics.html" class="nav-item"><i class="fas fa-chart-pie"></i> <span>Analytics</span></a></li>
+                    <li><a href="vendor_settings.html" class="nav-item"><i class="fas fa-sliders-h"></i> <span>Settings</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </div>
+        </aside>
+
+        <main class="main-content" id="mainContent">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+                    <div class="page-title">
+                        <h2>Your Catalog</h2>
+                        <p>Managing <span id="productCountHeader">0</span> total products.</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <a href="vendor_add_product.html" class="btn-primary" style="margin-right: 15px;"><i class="fas fa-plus"></i> New Product</a>
+                    <div class="notification-bell"><i class="far fa-bell"></i><span class="dot"></span></div>
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <span class="user-name">Green Vendor</span>
+                            <span class="user-role">Premium Seller</span>
+                        </div>
+                        <div class="user-avatar">V</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- UNIQUE FILTER TOOLBAR -->
+            <div class="filter-toolbar">
+                <div class="filter-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="productSearch" placeholder="Search by product name...">
+                </div>
+                <div class="filter-group">
+                    <select id="filterCategory" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="Solar Energy">Solar Energy</option>
+                        <option value="Wind Power">Wind Power</option>
+                        <option value="Energy Storage">Energy Storage</option>
+                        <option value="Eco Appliances">Eco Appliances</option>
+                         <option value="Home Goods">Home Goods</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Personal Care">Personal Care</option>
+                    </select>
+                    <select id="filterStatus" class="filter-select">
+                        <option value="all">Any Status</option>
+                        <option value="pending">pending</option>
+                        <option value="approved">approved</option>
+                        
+                    </select>
+                    <select id="filterStock" class="filter-select">
+                        <option value="all">Any Stock</option>
+                        <option value="low">Low Stock (&lt; 10)</option>
+                        <option value="empty">Out of Stock (0)</option>
+                    </select>
+                    <button id="resetProductFilters" class="btn-icon-text"><i class="fas fa-undo"></i> Reset</button>
+                </div>
+            </div>
+
+            <div class="card table-card">
+                <div class="table-responsive">
+                    <table class="data-table" id="productTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody><!-- JS Data Injected Here --></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Product Modal (Status Field Removed) -->
+<div class="modal" id="editProductModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Edit Product Details</h3>
+            <span class="close-button" id="closeEditModal">&times;</span>
+        </div>
+        <form id="editProductForm" class="modern-form">
+            <div class="form-group"><label>Product Name</label><input type="text" id="editProductName" required></div>
+            <div class="form-group">
+                <label>Category</label>
+                <select id="editCategory" required>
+                   <option value="Solar Energy">Solar Energy</option>
+                    <option value="Wind Power">Wind Power</option>
+                    <option value="Energy Storage">Energy Storage</option>
+                    <option value="Eco Appliances">Eco Appliances</option>
+                    <option value="Home Goods">Home Goods</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Personal Care">Personal Care</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Price ($)</label><input type="number" id="editPrice" step="0.01" required></div>
+                <div class="form-group"><label>Stock</label><input type="number" id="editStock" required></div>
+            </div>
+            <div class="form-group"><label>Image URL</label><input type="url" id="editImageURL"></div>
+            
+            <!-- STATUS FIELD REMOVED FROM HERE -->
+
+            <div class="form-group"><label>Description</label><textarea id="editDescription" rows="3"></textarea></div>
+            <div class="modal-footer">
+                <button type="button" class="btn-outline" id="cancelEdit">Cancel</button>
+                <button type="submit" class="btn-primary">Update Product</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <script type="module" src="../js/vendor.js"></script>
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('closed');
+            document.getElementById('dashboardContainer').classList.toggle('sidebar-closed');
+        });
+    </script>
+</body>
+</html>

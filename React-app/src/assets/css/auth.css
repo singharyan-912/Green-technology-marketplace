@@ -305,3 +305,65 @@
     .auth-visual-side { display: none; }
     .auth-form-side { padding: 40px 20px; }
 }
+
+/* ── Google / OAuth divider ─────────────────────────────────────────────── */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0 16px;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--auth-border);
+    border-radius: 1px;
+}
+
+.divider-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--auth-text-muted);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ── Google button ───────────────────────────────────────────────────────── */
+.google-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border: 1.5px solid var(--auth-border);
+    border-radius: 12px;
+    background: white;
+    color: var(--auth-text-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.google-btn:hover {
+    border-color: #dadce0;
+    background: #f8f9fa;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.google-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.google-icon {
+    flex-shrink: 0;
+}
+

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initializeFirestore, setLogLevel } from "firebase/firestore";
 import { getDatabase, ref, get, set, push, update, remove, onValue, query, orderByChild, equalTo } from "firebase/database";
 
@@ -41,5 +41,8 @@ export {
     onValue, 
     query, 
     orderByChild, 
-    equalTo 
+    equalTo,
+    GoogleAuthProvider,
+    signInWithPopup
 };
+

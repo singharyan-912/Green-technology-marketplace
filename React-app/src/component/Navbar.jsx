@@ -14,6 +14,7 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
+    const [navSearch, setNavSearch] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -37,6 +38,14 @@ const Navbar = () => {
             navigate('/login');
         } catch (error) {
             console.error("Logout failed:", error);
+        }
+    };
+
+    const handleNavSearch = (e) => {
+        if (e.key === 'Enter' && navSearch.trim()) {
+            navigate(`/customer?q=${encodeURIComponent(navSearch.trim())}`);
+            setNavSearch('');
+            setIsMenuOpen(false);
         }
     };
 
@@ -80,8 +89,14 @@ const Navbar = () => {
 
                     {/* Search Bar - Subtle */}
                     <div className="nav-search">
-                        <input type="text" placeholder="Search eco-tech..." />
-                        <span className="search-icon">🔍</span>
+                        <input 
+                            type="text" 
+                            placeholder="Search eco-tech..." 
+                            value={navSearch}
+                            onChange={(e) => setNavSearch(e.target.value)}
+                            onKeyDown={handleNavSearch}
+                        />
+                        <span className="search-icon" onClick={() => { if(navSearch.trim()) navigate(`/customer?q=${encodeURIComponent(navSearch.trim())}`); setNavSearch(''); }}>🔍</span>
                     </div>
 
                     {/* Cart & Wishlist Icons (only for logged-in customers) */}

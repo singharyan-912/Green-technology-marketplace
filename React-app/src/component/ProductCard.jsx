@@ -4,7 +4,20 @@ import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import '../index.css';
 
-const ProductCard = ({ product }) => {
+// Wraps matching text in a <mark> with the search-highlight CSS class
+const highlightText = (text, query) => {
+    if (!query || !text) return text;
+    const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escaped})`, 'gi');
+    const parts = String(text).split(regex);
+    return parts.map((part, i) =>
+        regex.test(part)
+            ? <mark key={i} className="search-highlight">{part}</mark>
+            : part
+    );
+};
+
+const ProductCard = ({ product, searchQuery = '' }) => {
     const navigate = useNavigate();
     const { addToCart } = useCart();
     const { toggleWishlist, isInWishlist } = useWishlist();
@@ -77,7 +90,7 @@ const ProductCard = ({ product }) => {
                     <div className="eco-label" style={{ color: eco.color }}>{eco.label}</div>
                 </div>
 
-                <h3 className="product-name">{product.displayName}</h3>
+                <h3 className="product-name">{highlightText(product.displayName, searchQuery)}</h3>
 
                 <p className="product-snippet">
                     {product.description || 'Modern green technology designed for maximum efficiency and minimal environmental footprint.'}
